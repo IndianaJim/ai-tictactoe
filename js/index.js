@@ -12,11 +12,27 @@ for (var i=1; i < 10; i++){
   bDisabled[i] = false;
 }
 
+function resetBoard(){
+ isResult = false;
+ for (var i=1; i < 10; i++){
+  button[i] = document.getElementById('canvas'+i);
+  ctx[i] = button[i].getContext('2d');
+  bDisabled[i] = false;
+  content[i] = "";
+  ctx[i].beginPath();
+  ctx[i].rect(0, 0, 100, 100);
+  ctx[i].fillStyle = '#5DD39E';
+  ctx[i].fill();
+  ctx[i].stroke();
+  ctx[i].closePath();
+ }
+}
+
 function loop(x){
   
   if(!bDisabled[x]){
     bDisabled[x] = true;
-    button[x].style.opacity = 0.7;
+    /* button[x].style.opacity = 0.7; */
     content[x] = 'X';
     
     button[x].style.Transform = 'rotateX(180deg)';
@@ -26,12 +42,12 @@ function loop(x){
     button[x].style.mozTransform = 'rotateX(180deg)';
     
     setTimeout(function(){
-          ctx[x].lineWidth = 3;
+          ctx[x].lineWidth = 4;
           ctx[x].beginPath();
-          ctx[x].moveTo(10,10);
-          ctx[x].lineTo(40,40);
-          ctx[x].moveTo(40,10);
-          ctx[x].lineTo(10,40);
+          ctx[x].moveTo(20,20);
+          ctx[x].lineTo(80,80);
+          ctx[x].moveTo(80,20);
+          ctx[x].lineTo(20,80);
           ctx[x].stroke();
           ctx[x].closePath();
           checkWinner();
@@ -127,7 +143,7 @@ function loop(x){
   function draw0Steps(x){
    if (!isResult){
     bDisabled[x] = true;
-    button[x].style.opacity = 0.8;
+    /* button[x].style.opacity = 0.9; */
     content[x] = '0';
     button[x].style.Transform = "rotateY(180deg)";
     button[x].style.webkitTransform = "rotateY(180deg)";
@@ -136,9 +152,9 @@ function loop(x){
     button[x].style.oTransform = "rotateY(180deg)";
     
     setTimeout(function(){
-         ctx[x].lineWidth = 3;
+         ctx[x].lineWidth = 4;
          ctx[x].beginPath();
-         ctx[x].arc(25, 25, 17, 0, Math.PI*2, false);
+         ctx[x].arc(50, 50, 35, 0, Math.PI*2, false);
          ctx[x].stroke();
          ctx[x].closePath();
          checkWinner();
@@ -148,22 +164,22 @@ function loop(x){
 
 function checkWinner(){
   if (!isResult){
-    if(content[1] =='X' && content[2] == 'X' && content[3] == 'X') showWinner("You Win!");
-    else if(content[1] =='0' && content[2] == '0' && content[3] == '0') showWinner("Computer Wins!");
-    else if(content[4] =='X' && content[5] == 'X' && content[6] == 'X') showWinner("You Win!");
-    else if(content[4] =='0' && content[5] == '0' && content[6] == '0') showWinner("Computer Wins!");
-    else if(content[7] =='X' && content[8] == 'X' && content[9] == 'X') showWinner("You Win!");
-    else if(content[7] =='0' && content[8] == '0' && content[9] == '0') showWinner("Computer Wins!");    
-    else if(content[1] =='X' && content[4] == 'X' && content[7] == 'X') showWinner("You Win!");
-    else if(content[1] =='0' && content[4] == '0' && content[7] == '0') showWinner("Computer Wins!");
-    else if(content[2] =='X' && content[5] == 'X' && content[8] == 'X') showWinner("You Win!");
-    else if(content[2] =='0' && content[5] == '0' && content[8] == '0') showWinner("Computer Wins!");
-    else if(content[3] =='X' && content[6] == 'X' && content[9] == 'X') showWinner("You Win!");
-    else if(content[3] =='0' && content[6] == '0' && content[9] == '0') showWinner("Computer Wins!");
-    else if(content[1] =='X' && content[5] == 'X' && content[9] == 'X') showWinner("You Win!");
-    else if(content[1] =='0' && content[5] == '0' && content[9] == '0') showWinner("Computer Wins!");
-    else if(content[3] =='X' && content[5] == 'X' && content[7] == 'X') showWinner("You Win!");
-    else if(content[3] =='0' && content[5] == '0' && content[7] == '0') showWinner("Computer Wins!");
+    if(content[1] =='X' && content[2] == 'X' && content[3] == 'X') showWinner(1,2,3,"You Win!");
+    else if(content[1] =='0' && content[2] == '0' && content[3] == '0') showWinner(1,2,3,"Computer Wins!");
+    else if(content[4] =='X' && content[5] == 'X' && content[6] == 'X') showWinner(4,5,6,"You Win!");
+    else if(content[4] =='0' && content[5] == '0' && content[6] == '0') showWinner(4,5,6,"Computer Wins!");
+    else if(content[7] =='X' && content[8] == 'X' && content[9] == 'X') showWinner(7,8,9,"You Win!");
+    else if(content[7] =='0' && content[8] == '0' && content[9] == '0') showWinner(7,8,9,"Computer Wins!");    
+    else if(content[1] =='X' && content[4] == 'X' && content[7] == 'X') showWinner(1,4,7,"You Win!");
+    else if(content[1] =='0' && content[4] == '0' && content[7] == '0') showWinner(1,4,7,"Computer Wins!");
+    else if(content[2] =='X' && content[5] == 'X' && content[8] == 'X') showWinner(2,5,8,"You Win!");
+    else if(content[2] =='0' && content[5] == '0' && content[8] == '0') showWinner(2,5,8,"Computer Wins!");
+    else if(content[3] =='X' && content[6] == 'X' && content[9] == 'X') showWinner(3,6,9,"You Win!");
+    else if(content[3] =='0' && content[6] == '0' && content[9] == '0') showWinner(3,6,9,"Computer Wins!");
+    else if(content[1] =='X' && content[5] == 'X' && content[9] == 'X') showWinner(1,5,9,"You Win!");
+    else if(content[1] =='0' && content[5] == '0' && content[9] == '0') showWinner(1,5,9,"Computer Wins!");
+    else if(content[3] =='X' && content[5] == 'X' && content[7] == 'X') showWinner(3,5,7,"You Win!");
+    else if(content[3] =='0' && content[5] == '0' && content[7] == '0') showWinner(3,5,7,"Computer Wins!");
     else { //testing for a game draw
        for (var i = 1; (content[i] == 'X' || content[i] == '0'); i++){
          if (i == 9) showWinner('Draw');
@@ -173,11 +189,19 @@ function checkWinner(){
   }
   
 }
-function showWinner(t){
+function showWinner(a,b,c,text){
   isResult = true;
+  
   for (var i = 1; i < 10; i++){
     bDisabled[i] = true;
   } 
   
-  setTimeout(function(){ alert(t);}, 50);
+  setTimeout(function(){ alert(text);}, 50);
+  
+  button[a].style.backgroundColor = "#BCE784";
+  button[b].style.backgroundColor = "#BCE784";
+  button[c].style.backgroundColor = "#BCE784";
+  
+  document.getElementById('choiceDiv').style.visibility = 'visible';
+  
 }

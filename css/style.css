@@ -2,11 +2,18 @@
   padding: 0px;
   margin: 0px;
 }
+
 body{
   text-align: center;
+  background-color: #513B56;
+}#title{
+  padding: 20px;
+  font-size: 40px;
+  color: #BCE784;
+  font-family: 'Fontdiner Swanky', cursive;
 }
 canvas{
-  background-color: blue;
+  background-color: #5DD39E;
   -webkit-transition: -webkit-transform 0.5s;
   -ms-transition: -ms-transform 0.5s;
   -o-transition: -o-transform 0.5s;
@@ -17,13 +24,40 @@ canvas:hover{
 
 }
 #canvasDiv{
-  margin: 150px auto 40px;
+  margin: 20px auto 40px;
 }
-#replayButton{
+#choiceDiv{
+  border: 2px;
+  border-color: black;
+  width; 300px;
+  height: 150px;
+  backgroundColor = "#BCE784";
+  /* display: none; */ /* none; */
+  visibility: hidden;
+}
+#choiceDiv > h3{
+  display: inline;
   text-decoration: none;
-  color: black;
-  font: 20px tahoma;
+  font: 30px tahoma;
+  color: #BCE784;
+  padding: 10px;
+  font-family: 'Fontdiner Swanky', cursive;
 }
-#replayButton:hover{
-  font-size: 23px;
+#X{
+  background-color: #5DD39E;
+  font: 30px tahoma;
+  padding: 10px;
+  opacity: 0.7;
+}
+#X:hover{
+  opacity: 1;
+}
+#O{
+  background-color: #5DD39E;
+  font: 30px tahoma;
+  padding: 10px;
+  opacity: 0.7;
+}
+#O:hover{
+  opacity: 1;
 }
