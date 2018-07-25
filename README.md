@@ -1,2 +1,2 @@
 # ai-tictactoe
-AI Tic Tac Toe game  for Free Code Camp challenge in web dev certification
+Tic Tac Toe game vs Computer - for Free Code Camp challenge in web dev certification
